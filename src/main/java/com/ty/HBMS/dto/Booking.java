@@ -1,76 +1,104 @@
 package com.ty.HBMS.dto;
 
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Booking {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int bookingid;
-	private String roomid;
 	private String uid;
 	private String bookedfrom;
 	private String bookedto;
 	private String numofadults;
 	private String numofchids;
 	private String amount;
-	public Booking() {
-		super();
-	}
-	public Booking(int bookingid, String roomid, String uid, String bookedfrom, String bookedto, String numofadults,
-			String numofchids, String amount) {
-		super();
-		this.bookingid = bookingid;
-		this.roomid = roomid;
-		this.uid = uid;
-		this.bookedfrom = bookedfrom;
-		this.bookedto = bookedto;
-		this.numofadults = numofadults;
-		this.numofchids = numofchids;
-		this.amount = amount;
-	}
+	@ManyToOne
+	@JoinColumn
+	private User user;
+	@ManyToMany
+	@JoinTable(joinColumns = @JoinColumn, inverseJoinColumns = @JoinColumn)
+	private List<Rooms> rooms;
+
 	public int getBookingid() {
 		return bookingid;
 	}
+
 	public void setBookingid(int bookingid) {
 		this.bookingid = bookingid;
 	}
-	public String getRoomid() {
-		return roomid;
-	}
-	public void setRoomid(String roomid) {
-		this.roomid = roomid;
-	}
+
 	public String getUid() {
 		return uid;
 	}
+
 	public void setUid(String uid) {
 		this.uid = uid;
 	}
+
 	public String getBookedfrom() {
 		return bookedfrom;
 	}
+
 	public void setBookedfrom(String bookedfrom) {
 		this.bookedfrom = bookedfrom;
 	}
+
 	public String getBookedto() {
 		return bookedto;
 	}
+
 	public void setBookedto(String bookedto) {
 		this.bookedto = bookedto;
 	}
+
 	public String getNumofadults() {
 		return numofadults;
 	}
+
 	public void setNumofadults(String numofadults) {
 		this.numofadults = numofadults;
 	}
+
 	public String getNumofchids() {
 		return numofchids;
 	}
+
 	public void setNumofchids(String numofchids) {
 		this.numofchids = numofchids;
 	}
+
 	public String getAmount() {
 		return amount;
 	}
+
 	public void setAmount(String amount) {
 		this.amount = amount;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public List<Rooms> getRooms() {
+		return rooms;
+	}
+
+	public void setRooms(List<Rooms> rooms) {
+		this.rooms = rooms;
 	}
 
 }

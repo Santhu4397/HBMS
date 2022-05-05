@@ -1,59 +1,84 @@
 package com.ty.HBMS.dto;
 
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Rooms {
-	   private String hotelid;
-	   private String roomid;
-	   private String roomno;
-	   private String roomtype;
-	   private String rommcost;
-	   private String roomavilable;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private String hotelid;
+	private String roomno;
+	private String roomtype;
+	private String rommcost;
+	private String roomavilable;
+	@ManyToOne
+	@JoinColumn
+	private Hotel hotel;
+	@ManyToMany(mappedBy = "rooms")
+	private List<Booking> bookings;
+
 	public String getHotelid() {
 		return hotelid;
 	}
+
 	public void setHotelid(String hotelid) {
 		this.hotelid = hotelid;
 	}
-	public String getRoomid() {
-		return roomid;
-	}
-	public void setRoomid(String roomid) {
-		this.roomid = roomid;
-	}
+
 	public String getRoomno() {
 		return roomno;
 	}
+
 	public void setRoomno(String roomno) {
 		this.roomno = roomno;
 	}
+
 	public String getRoomtype() {
 		return roomtype;
 	}
+
 	public void setRoomtype(String roomtype) {
 		this.roomtype = roomtype;
 	}
+
 	public String getRommcost() {
 		return rommcost;
 	}
+
 	public void setRommcost(String rommcost) {
 		this.rommcost = rommcost;
 	}
+
 	public String getRoomavilable() {
 		return roomavilable;
 	}
+
 	public void setRoomavilable(String roomavilable) {
 		this.roomavilable = roomavilable;
 	}
-	public Rooms(String hotelid, String roomid, String roomno, String roomtype, String rommcost, String roomavilable) {
-		super();
-		this.hotelid = hotelid;
-		this.roomid = roomid;
-		this.roomno = roomno;
-		this.roomtype = roomtype;
-		this.rommcost = rommcost;
-		this.roomavilable = roomavilable;
+
+	public Hotel getHotel() {
+		return hotel;
 	}
-	public Rooms() {
-		super();
+
+	public void setHotel(Hotel hotel) {
+		this.hotel = hotel;
 	}
-	   
+
+	public List<Booking> getBookings() {
+		return bookings;
+	}
+
+	public void setBookings(List<Booking> bookings) {
+		this.bookings = bookings;
+	}
+
 }
