@@ -12,7 +12,7 @@
 <a href="user">create user</a>
 <a href="getallusers">select users</a>
 <%User user=(User)request.getAttribute("save"); %>
-<%User user1=(User)request.getAttribute("udate"); %>
+<%User user1=(User)request.getAttribute("update"); %>
 <%int id=(Integer)request.getAttribute("remove"); %>
 <%if (user!=null){ %>
 <h1><%=user.getName() %> User Saved </h1>
