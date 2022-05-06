@@ -14,14 +14,11 @@
 <body>
 <h1 align="center" >HBMS HOME PAGE</h1>
 <a href="user">create user</a>
-<<<<<<< HEAD
 <a href="hotel">Create Hotel</a>
 <%Hotel hotel=(Hotel)request.getAttribute("hotel"); %>
 <%if(hotel!=null){ %>
 <h1><%=hotel.getHotelname() %> Hotel is Saved</h1>
 <%} %>
-
-=======
 <a href="getallusers">select users</a>
 <%User user=(User)request.getAttribute("save"); %>
 <%User user1=(User)request.getAttribute("udate"); %>
@@ -33,6 +30,5 @@
 <%}else{ %>
 <h1> User with ID:<%=id %> Removed </h1>
 <%} %>
->>>>>>> 685bc56e37aa49cf5179e06d95131a23dbf18c97
 </body>
 </html>
