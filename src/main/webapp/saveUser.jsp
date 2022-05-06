@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>User account created</title>
 </head>
 <body>
 <h1 align="center">Create User</h1>

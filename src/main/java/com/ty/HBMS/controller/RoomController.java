@@ -22,6 +22,7 @@ public class RoomController {
 	}
 	@PostMapping("saverooms")
 	public ModelAndView saveRoom() {
+		mv.setViewName("Home.jsp");
 		return mv;
 	}
 }
