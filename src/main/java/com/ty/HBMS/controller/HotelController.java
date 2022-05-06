@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ty.HBMS.dao.HotelDao;
@@ -35,6 +36,13 @@ public class HotelController {
 		List<Hotel> hotels=hotelDao.getAllHotels();
 		modelAndView.addObject("hotels",hotels);
 		modelAndView.setViewName("view_hotel.jsp");
+		return modelAndView;
+	}
+	@RequestMapping("/edithotel")
+	public ModelAndView editHotel(@RequestParam int id) {
+		Hotel hotel=hotelDao.getHotelById(id);
+		modelAndView.setViewName("edit_hotel.jsp");
+		modelAndView.addObject("edithotel", hotel);
 		return modelAndView;
 	}
 }
