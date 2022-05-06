@@ -45,4 +45,15 @@ public class UserDao {
 		return false;
 	}
 
+	public User validate(String email,String password) {
+		Query query=entityManager.createQuery("select s from User s where s.email=?1 and s.password=?2");
+		 User user = null;
+	query.setParameter(1, email);
+	query.setParameter(2, password);
+	List<User> list=query.getResultList();
+	if(list !=null&& list.size()>0) {
+		return list.get(0);
+	}
+	return null;
+	}
 }

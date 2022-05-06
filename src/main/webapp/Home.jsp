@@ -12,22 +12,9 @@
 <h1 align="center" >HBMS HOME PAGE</h1>
 <a href="user">create user</a>
 <a href="hotel">Create Hotel</a>
-<%Hotel hotel=(Hotel)request.getAttribute("hotel"); %>
-<%if(hotel!=null){ %>
-<h1><%=hotel.getHotelname() %> Hotel is Saved</h1>
-<%} %>
-<a href="getallusers">select users</a>
-<%User user=(User)request.getAttribute("save"); %>
-<%User user1=(User)request.getAttribute("update"); %>
-<%Integer id=(Integer)request.getAttribute("remove"); %>
-<%if (user!=null){ %>
-<h1><%=user.getName() %> User Saved </h1>
-<%}else if(user1!=null){%>
-<h1><%=user.getName() %> User UPdated </h1>
-<%}else if(id!=null){ %>
-<h1> User with ID:<%=id %> Removed </h1>
-<%} else{%>
+<a href="getallusers">View users</a>
+<a href="rooms">create Rooms</a>
+<a href="getroom">View Rooms</a>
 
-<%} %>
 </body>
 </html>
