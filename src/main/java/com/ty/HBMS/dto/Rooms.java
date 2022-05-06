@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 public class Rooms {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int hotelid;
+	private int roomId;
 	private String roomno;
 	private String roomtype;
 	private String rommcost;
@@ -25,12 +25,12 @@ public class Rooms {
 	@ManyToMany(mappedBy = "rooms")
 	private List<Booking> bookings;
 
-	public int getHotelid() {
-		return hotelid;
+	public int getRoomId() {
+		return roomId;
 	}
 
-	public void setHotelid(int hotelid) {
-		this.hotelid = hotelid;
+	public void setRoomId(int roomId) {
+		this.roomId = roomId;
 	}
 
 	public String getRoomno() {

@@ -26,7 +26,7 @@ public class UserController {
 		return mv;
 	}
 
-	@PostMapping("saveuser")
+	@RequestMapping("saveuser")
 	public ModelAndView saveUser(@ModelAttribute User user) {
 		dao.saveUser(user);
 		mv.addObject("save", user);
@@ -34,13 +34,13 @@ public class UserController {
 		return mv;
 	}
 
-	@GetMapping("getallusers")
+	@RequestMapping("getallusers")
 	public ModelAndView getAllUser() {
 		mv.addObject("users",dao.getAllUser());
 		mv.setViewName("getUser.jsp");
 		return mv;
 	}
-	@GetMapping("getbyid")
+	@RequestMapping("getbyid")
 	public ModelAndView getbyid(@RequestParam int id) {
 		User user =dao.getUser(id);
 		mv.addObject("user", user);

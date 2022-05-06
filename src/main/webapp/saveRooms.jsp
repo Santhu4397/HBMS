@@ -5,11 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>User account created</title>
+<title>Insert title here</title>
 </head>
 <body>
-<h1 align="center">Create User</h1>
-<form:form action="saveuser" modelAttribute="user">
+<h1 align="center">Creating Rooms For the Hotels </h1>
+<form:form action="saveuser" modelAttribute="room">
 <table>
 <tr><td>NAME:</td><td><form:input type="text" palceholder="Username" path="name"/></td></tr>
 <tr><td>Email:</td><td><form:input type="email" palceholder="UserEmail ID" path="email"/></td></tr>
@@ -24,7 +24,5 @@
 </table>
 <td><input type="submit" value="submit"/></td></tr>
 </form:form>
-
-
 </body>
 </html>
