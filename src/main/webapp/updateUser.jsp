@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" isELIgnored="false"%>
-         <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+    pageEncoding="UTF-8"%>
+      <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,9 +8,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1 align="center">Create User</h1>
-<form:form action="saveuser" modelAttribute="user">
+<h1 align="center">UpDate User</h1>
+<form:form action="updateuser" modelAttribute="user" method="post">
 <table>
+<tr><td>ID:</td><td><form:input type="number" palceholder="ID" path="uid" readonly="true"/></td></tr>
 <tr><td>NAME:</td><td><form:input type="text" palceholder="Username" path="name"/></td></tr>
 <tr><td>Email:</td><td><form:input type="email" palceholder="UserEmail ID" path="email"/></td></tr>
 <tr><td>password:</td><td><form:input type="password" palceholder="UserEmail ID" path="password"/></td></tr>
@@ -24,7 +25,5 @@
 </table>
 <td><input type="submit" value="submit"/></td></tr>
 </form:form>
-
-
 </body>
 </html>
