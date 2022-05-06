@@ -8,12 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1 align="center"><b>USERS DETIALS</b></h1>
+<h1 align="center"><b>USERS DETAILS</b></h1>
 	<table border="1" align="center">
 		<tr>
 			<th>name</th>
 			<th>email</th>
-			<th>contact Detials</th>
+			<th>contact Details</th>
 			<th>Address</th>
 			<th>role</th>
 			<th>update</th>
