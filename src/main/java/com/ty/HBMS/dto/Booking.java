@@ -16,7 +16,6 @@ public class Booking {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int bookingid;
-	private String uid;
 	private String bookedfrom;
 	private String bookedto;
 	private String numofadults;
@@ -35,14 +34,6 @@ public class Booking {
 
 	public void setBookingid(int bookingid) {
 		this.bookingid = bookingid;
-	}
-
-	public String getUid() {
-		return uid;
-	}
-
-	public void setUid(String uid) {
-		this.uid = uid;
 	}
 
 	public String getBookedfrom() {

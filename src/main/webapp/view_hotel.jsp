@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table>
+	<table border="2">
 		<tr>
 			<th>Hotel Id</th>
 			<th>Hotel Name</th>
@@ -35,8 +35,8 @@
 				<td>${hotels.hotelphone2}</td>
 				<td>${hotels.hoterating}</td>
 				<td>${hotels.hotelemail}</td>
-				<td><a href="edithotel?=${hotels.hotelid}"/>Edit</td>
-				<td><a href="removehotel?=${hotels.hotelid}"/>Remove</td>
+				<td><a href="edithotel?hotelid=${hotels.hotelid}"/>Edit</td>
+				<td><a href="removehotel?hotelid=${hotels.hotelid}"/>Remove</td>
 			</tr>
 		</c:forEach>
 	</table>

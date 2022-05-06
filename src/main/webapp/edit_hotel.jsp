@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form:form>
+	<form:form modelAttribute="edithotel" action="updatehotel">
 		<table>
 			<tr>
 				<td><form:label path="hotelid">Hotel ID :</form:label></td>

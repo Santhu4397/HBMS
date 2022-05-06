@@ -39,10 +39,22 @@ public class HotelController {
 		return modelAndView;
 	}
 	@RequestMapping("/edithotel")
-	public ModelAndView editHotel(@RequestParam int id) {
-		Hotel hotel=hotelDao.getHotelById(id);
+	public ModelAndView editHotel(@RequestParam int hotelid) {
+		Hotel hotel=hotelDao.getHotelById(hotelid);
 		modelAndView.setViewName("edit_hotel.jsp");
 		modelAndView.addObject("edithotel", hotel);
+		return modelAndView;
+	}
+	@RequestMapping("updatehotel")
+	public ModelAndView updateHotel(@ModelAttribute Hotel edithotel) {
+		hotelDao.updateHotel(edithotel);
+		modelAndView.setViewName("Home.jsp");
+		return modelAndView;
+	}
+	@RequestMapping("removehotel")
+	public ModelAndView deleteHotel(@RequestParam int hotelid) {
+		hotelDao.deleteHotel(hotelid);
+		modelAndView.setViewName("Home.jsp");
 		return modelAndView;
 	}
 }

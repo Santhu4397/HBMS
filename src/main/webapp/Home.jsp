@@ -12,6 +12,9 @@
 <h1 align="center" >HBMS HOME PAGE</h1>
 <a href="user">create user</a>
 <a href="hotel">Create Hotel</a>
+<a href="getallhotels">View Hotels</a>
+<a href="booking">Create Booking</a>
+<a href="getallbookings">View all bookings</a>
 <%Hotel hotel=(Hotel)request.getAttribute("hotel"); %>
 <%if(hotel!=null){ %>
 <h1><%=hotel.getHotelname() %> Hotel is Saved</h1>
