@@ -6,7 +6,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.PostMapping;
+=======
+>>>>>>> d46a668df99b31bcbf7520bc74593255fe712d99
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,7 +22,7 @@ public class LoginController {
 	private UserDao dao;
 	ModelAndView mv=new ModelAndView();
 
-	@PostMapping("my")
+	@RequestMapping("login")
 	public ModelAndView login(HttpServletRequest req) {
 		String email=req.getParameter("emailid");
 		String pass=req.getParameter("pass");
@@ -33,7 +36,8 @@ public class LoginController {
 			 return mv;
 		}
 		else {
-			mv.setViewName("login,jsp");
+			mv.setViewName("login.jsp");
+			System.out.println("1");
 			return mv;
 		}
 	
