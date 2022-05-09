@@ -18,6 +18,7 @@ public class UserController {
 	@Autowired
 	UserDao dao;
 	private ModelAndView mv = new ModelAndView();
+	
 
 	@RequestMapping("user")
 	public ModelAndView User() {

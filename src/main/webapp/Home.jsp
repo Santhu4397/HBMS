@@ -15,6 +15,7 @@
 <a href="getallusers">View users</a>
 <a href="rooms">create Rooms</a>
 <a href="getroom">View Rooms</a>
-
+<a href="login.jsp">login   </a>
+<a href="log">log out</a>
 </body>
 </html>

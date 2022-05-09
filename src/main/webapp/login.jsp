@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h4 align="center">Login page</h4>
-	<form action="login" method="post">
+	<form action="my" method="post">
 		<table>
 			<tr>
 				<td>email ID :</td>
