@@ -30,11 +30,9 @@ li a {
 		<li><a href="user">Create user</a></li>
 		<li><a href="hotel">Create Hotel</a></li>
 		<li><a href="booking">Create Booking</a></li>
-		<li><a href="rooms">Create Rooms</a></li>
 		<li><a href="getallhotels">View Hotels</a></li>
 		<li><a href="getallbookings">View all bookings</a></li>
-		<li><a href="getallusers">View users</a></li>
-		<li><a href="getroom">View Rooms</a></li>
+		<li><a href="getallusers">View users</a></li> 
 		<li><a href="login.jsp">login </a></li>
 		<li><a href="logout">log out</a></li>
 	</ul>

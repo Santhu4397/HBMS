@@ -60,7 +60,7 @@ public class LoginController {
 	public ModelAndView logout(HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		session.invalidate();
-		mv.setViewName("Home.jsp");
+		mv.setViewName("login.jsp");
 		return mv;
 	}
 }
