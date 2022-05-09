@@ -33,9 +33,7 @@ public class HotelController {
 	public ModelAndView saveHotel(@ModelAttribute Hotel hotel,HttpServletRequest req) {
 		HttpSession session=req.getSession();
 		User user=(User)session.getAttribute("user");
-		List<User>list= new ArrayList<User>();	
-			list.add(user);
-			hotel.setUsers(list);
+			hotel.setUsers(user);
 		hotelDao.saveHotel(hotel);
 		modelAndView.addObject("hotel",hotel);
 		modelAndView.setViewName("Home.jsp");
