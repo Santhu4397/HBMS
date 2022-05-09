@@ -5,7 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ty.HBMS.dao.UserDao;
@@ -17,7 +17,7 @@ public class LoginController {
 	private UserDao dao;
 	ModelAndView mv=new ModelAndView();
 
-	@PostMapping("login")
+	@RequestMapping("login")
 	public ModelAndView login(HttpServletRequest req) {
 		String email=req.getParameter("emailid");
 		String pass=req.getParameter("pass");
