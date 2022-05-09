@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan("com.ty")
+@ComponentScan(basePackages = {"com.ty.HBMS.config","com.ty.HBMS.controller","com.ty.HBMS.dao","com.ty.HBMS.dto","com.ty.HBMS.service"})
 public class IocConfig {
 	@Bean
 	public EntityManager getEntityManager() {

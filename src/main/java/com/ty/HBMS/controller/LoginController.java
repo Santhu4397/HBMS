@@ -31,7 +31,8 @@ public class LoginController {
 			 return mv;
 		}
 		else {
-			mv.setViewName("login,jsp");
+			mv.setViewName("login.jsp");
+			System.out.println("1");
 			return mv;
 		}
 	
