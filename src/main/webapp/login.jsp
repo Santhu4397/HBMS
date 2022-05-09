@@ -8,11 +8,8 @@
 </head>
 <body>
 	<h4 align="center">Login page</h4>
-<<<<<<< HEAD
-	<form action="my" method="post">
-=======
-	<form action="login">
->>>>>>> d46a668df99b31bcbf7520bc74593255fe712d99
+
+	<form action="login" method="post">
 		<table>
 			<tr>
 				<td>email ID :</td>
