@@ -1,3 +1,4 @@
+<%@page import="com.ty.HBMS.dto.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -8,6 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%HttpSession httpSession=request.getSession();
+	User user=(User)httpSession.getAttribute("user"); %>
 	<table border="2">
 		<tr>
 			<th>Hotel Id</th>
@@ -20,10 +23,15 @@
 			<th>Hotel PhoneNumber2</th>
 			<th>Hotel Rating</th>
 			<th>hotel Email</th>
+			<%if(user!=null && user.getRole().equalsIgnoreCase("admin")){%>
 			<th>Update</th>
 			<th>Remove</th>
 			<th>Add Rooms</th>
 			<th>View Rooms</th>
+			<%}else{%>
+			<th>Create Booking</th>
+			<th>View Booking</th>
+			<%} %>
 		</tr>
 		<c:forEach items="${hotels}" var="hotels">
 			<tr>
@@ -37,11 +45,15 @@
 				<td>${hotels.hotelphone2}</td>
 				<td>${hotels.hoterating}</td>
 				<td>${hotels.hotelemail}</td>
-				<td><a href="edithotel?hotelid=${hotels.hotelid}" />Edit</td>
-				<td><a href="removehotel?hotelid=${hotels.hotelid}" />Remove</td>
-				<td><a href="rooms?hotelid=${hotels.hotelid}" />Create
-					Rooms</td>
-				<td><a href="getroom?hotelid=${hotels.hotelid}"/>View Rooms</td>
+				<%if(user!=null && user.getRole().equalsIgnoreCase("admin")){%>
+				<td><a href="edithotel?hotelid=${hotels.hotelid}">Edit</a></td>
+				<td><a href="removehotel?hotelid=${hotels.hotelid}">Remove</a></td>
+				<td><a href="rooms?hotelid=${hotels.hotelid}">Create Rooms</a></td>
+				<td><a href="getroom?hotelid=${hotels.hotelid}">View Rooms</a></td>
+				<%}else{%>
+				<td><a href="booking" />Create Booking</td>
+				<td><a href="getallbookings" />View Bookings</td>
+				<%} %>
 			</tr>
 		</c:forEach>
 	</table>

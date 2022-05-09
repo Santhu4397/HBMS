@@ -19,6 +19,7 @@ User user=(User)ht.getAttribute("user");
 	<% if(role.equalsIgnoreCase("admin")){%>
 	<%@ include file="AdminNavbar.jsp" %>
 		<% }else if(role.equalsIgnoreCase("user")){%>
+		<%@include file="user_navbar.jsp" %>
 		<%} else {%>
 	<%response.sendRedirect("login.jsp"); %>
 		<%} }%>

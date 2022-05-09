@@ -2,6 +2,9 @@ package com.ty.HBMS.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ty.HBMS.dao.BookingDao;
 import com.ty.HBMS.dto.Booking;
+import com.ty.HBMS.dto.User;
 
 @Controller
 public class BookingController {
@@ -26,15 +30,20 @@ public class BookingController {
 	}
 
 	@RequestMapping("savebooking")
-	public ModelAndView saveBooking(@ModelAttribute Booking booking) {
+	public ModelAndView saveBooking(@ModelAttribute Booking booking,HttpServletRequest request) {
+		HttpSession httpSession=request.getSession();
+		User user=(User)httpSession.getAttribute("user");
+		booking.setUser(user);
 		bookingDao.saveBooking(booking);
 		modelAndView.setViewName("Home.jsp");
 		return modelAndView;
 	}
 
 	@RequestMapping("getallbookings")
-	public ModelAndView getAllBookings() {
-		List<Booking> bookings = bookingDao.getAllBooking();
+	public ModelAndView getAllBookings(HttpServletRequest request) {
+		HttpSession httpSession=request.getSession();
+		User user=(User)httpSession.getAttribute("user");
+		List<Booking> bookings = user.getBookings();
 		modelAndView.setViewName("view_booking.jsp");
 		modelAndView.addObject("booking", bookings);
 		return modelAndView;

@@ -23,6 +23,8 @@ public class User {
 	private String role;
 	@OneToMany(mappedBy = "users")
 	private List<Hotel> hotels;
+	@OneToMany(mappedBy = "user")
+	private List<Booking> bookings;
 
 	public int getUid() {
 		return uid;
@@ -86,6 +88,14 @@ public class User {
 
 	public void setHotels(List<Hotel> hotels) {
 		this.hotels = hotels;
+	}
+
+	public List<Booking> getBookings() {
+		return bookings;
+	}
+
+	public void setBookings(List<Booking> bookings) {
+		this.bookings = bookings;
 	}
 
 }
