@@ -1,11 +1,14 @@
 package com.ty.HBMS.dto;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -18,9 +21,8 @@ public class User {
 	private String mob;
 	private String address;
 	private String role;
-	@ManyToOne
-	@JoinColumn
-	private Hotel hotel;
+	@OneToMany(mappedBy = "users")
+	private List<Hotel> hotels;
 
 	public int getUid() {
 		return uid;
@@ -78,12 +80,12 @@ public class User {
 		this.role = role;
 	}
 
-	public Hotel getHotel() {
-		return hotel;
+	public List<Hotel> getHotels() {
+		return hotels;
 	}
 
-	public void setHotel(Hotel hotel) {
-		this.hotel = hotel;
+	public void setHotels(List<Hotel> hotels) {
+		this.hotels = hotels;
 	}
 
 }

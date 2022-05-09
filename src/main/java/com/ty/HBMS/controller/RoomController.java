@@ -10,18 +10,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ty.HBMS.dao.HotelDao;
 import com.ty.HBMS.dao.RoomDao;
 import com.ty.HBMS.dto.Rooms;
-import com.ty.HBMS.dto.User;
 
 @Controller
 public class RoomController {
 	@Autowired
 	private RoomDao dao;
+	@Autowired
+	private HotelDao hotelDao;
 	private ModelAndView mv = new ModelAndView();
+	private int hotelId;
 
 	@RequestMapping("rooms")
-	public ModelAndView creatRoom() {
+	public ModelAndView creatRoom(@RequestParam int hotelid) {
+		this.hotelId = hotelid;
 		mv.addObject("room", new Rooms());
 		mv.setViewName("saveRooms.jsp");
 		return mv;
@@ -29,14 +33,15 @@ public class RoomController {
 
 	@PostMapping("saverooms")
 	public ModelAndView saveRoom(@ModelAttribute Rooms rooms) {
-		dao.saveRoom(rooms);
+		rooms.setRoomavilable("available");
+		dao.saveRoom(rooms, hotelId);
 		mv.setViewName("Home.jsp");
 		return mv;
 	}
 
 	@RequestMapping("getroom")
-	public ModelAndView getRoom() {
-		List<Rooms> rooms = dao.getRooms();
+	public ModelAndView getRoom(@RequestParam int hotelid) {
+		List<Rooms> rooms = hotelDao.getHotelById(hotelid).getRooms();
 		mv.addObject("rooms", rooms);
 		mv.setViewName("getRooms.jsp");
 		return mv;
@@ -50,12 +55,14 @@ public class RoomController {
 		mv.setViewName("updateRoom.jsp");
 		return mv;
 	}
+
 	@RequestMapping("updateroom")
 	public ModelAndView updateRoom(@ModelAttribute Rooms rooms) {
 		dao.updateRoom(rooms);
 		mv.setViewName("Home.jsp");
 		return mv;
 	}
+
 	@RequestMapping("removeroom")
 	public ModelAndView remove(@RequestParam int id) {
 		dao.removeRoom(id);

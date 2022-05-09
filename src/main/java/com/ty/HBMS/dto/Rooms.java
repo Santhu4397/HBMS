@@ -19,6 +19,7 @@ public class Rooms {
 	private String roomtype;
 	private String rommcost;
 	private String roomavilable;
+	private int roomCapacity;
 	@ManyToOne
 	@JoinColumn
 	private Hotel hotel;
@@ -63,6 +64,14 @@ public class Rooms {
 
 	public void setRoomavilable(String roomavilable) {
 		this.roomavilable = roomavilable;
+	}
+
+	public int getRoomCapacity() {
+		return roomCapacity;
+	}
+
+	public void setRoomCapacity(int roomCapacity) {
+		this.roomCapacity = roomCapacity;
 	}
 
 	public Hotel getHotel() {

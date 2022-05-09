@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -22,8 +24,9 @@ public class Hotel {
 	private String hotelphone2;
 	private String hoterating;
 	private String hotelemail;
-	@OneToMany(mappedBy = "hotel")
-	private List<User> users;
+	@ManyToOne
+	@JoinColumn
+	private User users;
 	@OneToMany(mappedBy = "hotel")
 	private List<Rooms> rooms;
 
@@ -35,11 +38,11 @@ public class Hotel {
 		this.hotelid = hotelid;
 	}
 
-	public List<User> getUsers() {
+	public User getUsers() {
 		return users;
 	}
 
-	public void setUsers(List<User> users) {
+	public void setUsers(User users) {
 		this.users = users;
 	}
 

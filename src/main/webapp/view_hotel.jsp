@@ -22,6 +22,8 @@
 			<th>hotel Email</th>
 			<th>Update</th>
 			<th>Remove</th>
+			<th>Add Rooms</th>
+			<th>View Rooms</th>
 		</tr>
 		<c:forEach items="${hotels}" var="hotels">
 			<tr>
@@ -35,8 +37,11 @@
 				<td>${hotels.hotelphone2}</td>
 				<td>${hotels.hoterating}</td>
 				<td>${hotels.hotelemail}</td>
-				<td><a href="edithotel?hotelid=${hotels.hotelid}"/>Edit</td>
-				<td><a href="removehotel?hotelid=${hotels.hotelid}"/>Remove</td>
+				<td><a href="edithotel?hotelid=${hotels.hotelid}" />Edit</td>
+				<td><a href="removehotel?hotelid=${hotels.hotelid}" />Remove</td>
+				<td><a href="rooms?hotelid=${hotels.hotelid}" />Create
+					Rooms</td>
+				<td><a href="getroom?hotelid=${hotels.hotelid}"/>View Rooms</td>
 			</tr>
 		</c:forEach>
 	</table>
