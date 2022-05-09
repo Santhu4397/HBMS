@@ -1,6 +1,10 @@
 package com.ty.HBMS.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ty.HBMS.dao.HotelDao;
 import com.ty.HBMS.dto.Hotel;
+import com.ty.HBMS.dto.User;
 
 @Controller
 public class HotelController {
@@ -25,7 +30,12 @@ public class HotelController {
 		return modelAndView;
 	}
 	@RequestMapping("/savehotel")
-	public ModelAndView saveHotel(@ModelAttribute Hotel hotel) {
+	public ModelAndView saveHotel(@ModelAttribute Hotel hotel,HttpServletRequest req) {
+		HttpSession session=req.getSession();
+		User user=(User)session.getAttribute("user");
+		List<User>list= new ArrayList<User>();	
+			list.add(user);
+			hotel.setUsers(list);
 		hotelDao.saveHotel(hotel);
 		modelAndView.addObject("hotel",hotel);
 		modelAndView.setViewName("Home.jsp");

@@ -9,14 +9,19 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%HttpSession ht=request.getSession();
+User user=(User)ht.getAttribute("user");
+%>
+
 	<h1 align="center">HBMS HOME PAGE</h1>
-	<a href="user">create user</a>
-	<a href="hotel">Create Hotel</a>
-	<a href="getallhotels">View Hotels</a>
-	<a href="booking">Create Booking</a>
-	<a href="getallbookings">View all bookings</a>
-	<a href="getallusers">View users</a>
-	<a href="rooms">create Rooms</a>
-	<a href="getroom">View Rooms</a>
+	<% String role=user.getRole(); %>
+	<% if(role.equalsIgnoreCase("admin")){%>
+	<%@ include file="AdminNavbar.jsp" %>
+		<% }else if(role.equalsIgnoreCase("user")){%>
+		<%} else {%>
+	<%response.sendRedirect("login.jsp"); %>
+		<%} %>
+	
+
 </body>
 </html>
