@@ -27,7 +27,7 @@ public class LoginController {
 		if (user != null ) {
 			HttpSession session = req.getSession();
 			session.setAttribute("user", user);
-			
+			System.out.println(user);
 			mv.setViewName("Home.jsp");
 
 			return mv;
@@ -50,7 +50,7 @@ public class LoginController {
 			 */
 		else {
 			mv.setViewName("login.jsp");
-
+			System.out.println(user);
 			return mv;
 		}
 
