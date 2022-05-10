@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h2 align="center">Hotel Details</h2>
 	<%HttpSession httpSession=request.getSession();
 	User user=(User)httpSession.getAttribute("user"); %>
 	<table border="2">
@@ -29,8 +30,7 @@
 			<th>Add Rooms</th>
 			<th>View Rooms</th>
 			<%}else{%>
-			<th>Create Booking</th>
-			<th>View Booking</th>
+			<th>View Rooms</th>
 			<%} %>
 		</tr>
 		<c:forEach items="${hotels}" var="hotels">
@@ -51,8 +51,7 @@
 				<td><a href="rooms?hotelid=${hotels.hotelid}">Create Rooms</a></td>
 				<td><a href="getroom?hotelid=${hotels.hotelid}">View Rooms</a></td>
 				<%}else{%>
-				<td><a href="booking" />Create Booking</td>
-				<td><a href="getallbookings" />View Bookings</td>
+				<td><a href="getroom?hotelid=${hotels.hotelid}">View Rooms</a></td>
 				<%} %>
 			</tr>
 		</c:forEach>
