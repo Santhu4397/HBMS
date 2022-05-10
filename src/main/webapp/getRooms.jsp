@@ -14,7 +14,7 @@
 			<th>room no</th>
 			<th>room type</th>
 			<th>room cost</th>
-			<th>room avilable</th>
+			<th>room available</th>
 			<th>update</th>
 			<th>remove</th>
 		</tr>

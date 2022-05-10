@@ -36,7 +36,7 @@ public class HotelController {
 			hotel.setUsers(user);
 		hotelDao.saveHotel(hotel);
 		modelAndView.addObject("hotel",hotel);
-		modelAndView.setViewName("Home.jsp");
+		modelAndView.setViewName("AdminNavbar.jsp");
 		return modelAndView;
 	}
 	@RequestMapping("/getallhotels")
@@ -56,13 +56,13 @@ public class HotelController {
 	@RequestMapping("updatehotel")
 	public ModelAndView updateHotel(@ModelAttribute Hotel edithotel) {
 		hotelDao.updateHotel(edithotel);
-		modelAndView.setViewName("Home.jsp");
+		modelAndView.setViewName("AdminNavbar.jsp");
 		return modelAndView;
 	}
 	@RequestMapping("removehotel")
 	public ModelAndView deleteHotel(@RequestParam int hotelid) {
 		hotelDao.deleteHotel(hotelid);
-		modelAndView.setViewName("Home.jsp");
+		modelAndView.setViewName("AdminNavbar.jsp");
 		return modelAndView;
 	}
 }
