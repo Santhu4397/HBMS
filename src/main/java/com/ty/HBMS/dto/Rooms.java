@@ -1,13 +1,10 @@
 package com.ty.HBMS.dto;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -23,8 +20,9 @@ public class Rooms {
 	@ManyToOne
 	@JoinColumn
 	private Hotel hotel;
-	@ManyToMany(mappedBy = "rooms")
-	private List<Booking> bookings;
+	@ManyToOne
+	@JoinColumn
+	private Booking bookings;
 
 	public int getRoomId() {
 		return roomId;
@@ -82,11 +80,11 @@ public class Rooms {
 		this.hotel = hotel;
 	}
 
-	public List<Booking> getBookings() {
+	public Booking getBookings() {
 		return bookings;
 	}
 
-	public void setBookings(List<Booking> bookings) {
+	public void setBookings(Booking bookings) {
 		this.bookings = bookings;
 	}
 

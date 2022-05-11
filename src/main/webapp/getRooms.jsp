@@ -54,37 +54,8 @@
 				<%
 				} else {
 				%>
-				<%
-				List<Rooms> rooms = (List<Rooms>) request.getAttribute("rooms");
-				System.out.println(rooms+"*");
-				%>
-				<%
-				RoomDao dao = new RoomDao();
-				%>
-				<%
-				Rooms room = null;
-				%>
-				<%
-				for (Rooms r : rooms) {
-					room =dao.getById(r.getRoomId());
-				%>
-				<%
-				}
-				%>
-				<%
-				if (!room.getRoomavilable().equalsIgnoreCase("Booked")) {
-				%>
-				<td><a href="booking?roomId=${u.roomId}">Book</a></td>
+				<td><a href="add?roomId=${u.roomId}">Add to Cart</a></td>
 				<td><a href="getallbookings?">view Booking</a></td>
-				<%
-				} else {
-				%>
-				<%
-				response.sendRedirect("user_navbar.jsp");
-				%>
-				<%
-				}
-				%>
 				<%
 				}
 				%>
