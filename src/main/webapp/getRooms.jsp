@@ -1,3 +1,6 @@
+<%@page import="org.hibernate.internal.build.AllowSysOut"%>
+<%@page import="java.util.List"%>
+<%@page import="com.ty.HBMS.dto.Rooms"%>
 <%@page import="com.ty.HBMS.dao.RoomDao"%>
 <%@page import="com.ty.HBMS.dto.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -23,7 +26,7 @@
 			<th>room type</th>
 			<th>room cost</th>
 			<th>room available</th>
-<%
+			<%
 			if (user != null && user.getRole().equalsIgnoreCase("admin")) {
 			%>
 			<th>update</th>
@@ -51,11 +54,37 @@
 				<%
 				} else {
 				%>
-				<%RoomDao roomDao=new RoomDao();
-					roomDao.getRoomById();
+				<%
+				List<Rooms> rooms = (List<Rooms>) request.getAttribute("rooms");
+				System.out.println(rooms+"*");
+				%>
+				<%
+				RoomDao dao = new RoomDao();
+				%>
+				<%
+				Rooms room = null;
+				%>
+				<%
+				for (Rooms r : rooms) {
+					room =dao.getById(r.getRoomId());
+				%>
+				<%
+				}
+				%>
+				<%
+				if (!room.getRoomavilable().equalsIgnoreCase("Booked")) {
 				%>
 				<td><a href="booking?roomId=${u.roomId}">Book</a></td>
 				<td><a href="getallbookings?">view Booking</a></td>
+				<%
+				} else {
+				%>
+				<%
+				response.sendRedirect("user_navbar.jsp");
+				%>
+				<%
+				}
+				%>
 				<%
 				}
 				%>

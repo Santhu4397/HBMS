@@ -30,6 +30,7 @@ public class RoomDao {
 	}
 
 	public Rooms getById(int id) {
+		System.out.println(id);
 		return entityManager.find(Rooms.class, id);
 	}
 

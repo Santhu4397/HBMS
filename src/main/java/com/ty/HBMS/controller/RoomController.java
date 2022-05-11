@@ -41,6 +41,7 @@ public class RoomController {
 
 	@RequestMapping("getroom")
 	public ModelAndView getRoom(@RequestParam int hotelid) {
+		System.out.println(hotelid);
 		List<Rooms> rooms = hotelDao.getHotelById(hotelid).getRooms();
 		mv.addObject("rooms", rooms);
 		mv.setViewName("getRooms.jsp");
