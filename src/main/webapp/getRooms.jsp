@@ -51,10 +51,7 @@
 				<%
 				} else {
 				%>
-				<%RoomDao roomDao=new RoomDao();
-					roomDao.getRoomById();
-				%>
-				<td><a href="booking?roomId=${u.roomId}">Book</a></td>
+				<td><a href="add?roomId=${u.roomId}">Add to Cart</a></td>
 				<td><a href="getallbookings?">view Booking</a></td>
 				<%
 				}

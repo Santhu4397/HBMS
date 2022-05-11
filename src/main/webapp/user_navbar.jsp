@@ -29,6 +29,7 @@ li a {
 <body>
 	<ul>
 		<li><a href="getallhotels">View Hotels</a></li>
+		<li><a href="showcart">View Cart</a></li>
 		<li><a href="logout">log out</a></li>
 	</ul>
 </body>

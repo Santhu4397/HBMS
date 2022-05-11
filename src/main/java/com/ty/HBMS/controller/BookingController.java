@@ -26,28 +26,55 @@ public class BookingController {
 	@Autowired
 	private RoomDao roomDao;
 	private ModelAndView modelAndView = new ModelAndView();
+	private int roomId;
+	private HttpSession httpSession;
 
 	@RequestMapping("booking")
-	public ModelAndView save(@RequestParam int roomId) {
-		Rooms room = roomDao.getById(roomId);
+	public ModelAndView save(HttpServletRequest request) {
 		List<Rooms> rooms = new ArrayList<Rooms>();
-		if (room.getRoomavilable().equalsIgnoreCase("Available") && !room.getRoomavilable().equals("Booked")) {
-			room.setRoomavilable("Booked");
-		}
-		rooms.add(room);
-		Booking booking = new Booking();
-		booking.setRooms(rooms);
+		httpSession = request.getSession();
+
 		modelAndView.setViewName("save_booking.jsp");
-		modelAndView.addObject("booking", booking);
+		modelAndView.addObject("booking", new Booking());
+		modelAndView.addObject("rooms", rooms);
+		return modelAndView;
+	}
+
+	@RequestMapping("add")
+	public ModelAndView addToSession(@RequestParam int roomId, HttpServletRequest request) {
+		this.roomId = roomId;
+		httpSession = request.getSession();
+		Rooms room = roomDao.getById(roomId);
+		List<Rooms> rooms = null;
+		if (rooms == null) {
+			rooms = new ArrayList<Rooms>();
+			rooms.add(room);
+		} else {
+			rooms.add(room);
+		}
+		httpSession.setAttribute("rooms", rooms);
+		modelAndView.setViewName("user_navbar.jsp");
+		return modelAndView;
+	}
+
+	@RequestMapping("showcart")
+	public ModelAndView showCart() {
+		modelAndView.setViewName("showcart.jsp");
 		return modelAndView;
 	}
 
 	@RequestMapping("savebooking")
 	public ModelAndView saveBooking(@ModelAttribute Booking booking, HttpServletRequest request) {
-		HttpSession httpSession = request.getSession();
+		httpSession = request.getSession();
 		User user = (User) httpSession.getAttribute("user");
 		booking.setUser(user);
+		List<Rooms> rooms = (List<Rooms>) httpSession.getAttribute("rooms");
+		booking.setRooms(rooms);
 		bookingDao.saveBooking(booking);
+		for (Rooms r : rooms) {
+			r.setRoomavilable("Booked");
+			r.setBookings(booking);
+		}
 		modelAndView.setViewName("user_navbar.jsp");
 		return modelAndView;
 	}
