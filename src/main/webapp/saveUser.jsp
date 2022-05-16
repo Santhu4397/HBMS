@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" isELIgnored="false"%>
+<%@page import="com.ty.HBMS.dto.User"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
@@ -7,10 +8,20 @@
 <meta charset="UTF-8">
 <title>User account created</title>
 </head>
-<body>
+<body >
 	<h1 align="center">Create User Details</h1>
-	<form:form action="saveuser" modelAttribute="user">
-		<table>
+	<!--  
+<%
+	HttpSession httpSession = request.getSession();
+	User user = (User) httpSession.getAttribute("user");
+	%>
+	<%if(user != null &&user.getRole().equalsIgnoreCase("admin")){ %>
+		<%@ include file="AdminNavbar.jsp" %>
+	<%} else { %>
+		<%@ include file="user_navbar.jsp" %>
+	<%} %>-->
+	<form:form action="saveuser" modelAttribute="user" >
+		<table >
 			<tr>
 				<td>NAME:</td>
 				<td><form:input type="text" palceholder="Username" path="name" /></td>
@@ -38,9 +49,14 @@
 
 			<tr>
 				<td>ROLE:</td>
+				<%if(user != null &&user.getRole().equalsIgnoreCase("admin")){ %>
 				<td><form:radiobutton value="Admin" path="role" />Admin <form:radiobutton
 						value="Emp" path="role" />EMP <form:radiobutton value="User"
 						path="role" />User</td>
+						<%}else{ %>
+							<td><form:radiobutton value="User"
+						path="role" />User</td>
+						<%} %>
 			</tr>
 		</table>
 		<td><input type="submit" value="submit" /></td>

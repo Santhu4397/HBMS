@@ -45,14 +45,17 @@ public class BookingController {
 		this.roomId = roomId;
 		httpSession = request.getSession();
 		Rooms room = roomDao.getById(roomId);
-		List<Rooms> rooms = null;
-		if (rooms == null) {
-			rooms = new ArrayList<Rooms>();
-			rooms.add(room);
+		Object object=httpSession.getAttribute("rooms");
+		
+		if (object == null) {
+			List<Rooms> list = new ArrayList<Rooms>();
+			list.add(room);
+			httpSession.setAttribute("rooms", list);
 		} else {
-			rooms.add(room);
+		List<Rooms>list=(List<Rooms>)httpSession.getAttribute("rooms");
+		list.add(room);
+		httpSession.setAttribute("rooms", list);
 		}
-		httpSession.setAttribute("rooms", rooms);
 		modelAndView.setViewName("user_navbar.jsp");
 		return modelAndView;
 	}
@@ -70,11 +73,12 @@ public class BookingController {
 		booking.setUser(user);
 		List<Rooms> rooms = (List<Rooms>) httpSession.getAttribute("rooms");
 		booking.setRooms(rooms);
-		bookingDao.saveBooking(booking);
+	
 		for (Rooms r : rooms) {
 			r.setRoomavilable("Booked");
 			r.setBookings(booking);
 		}
+		bookingDao.saveBooking(booking);
 		modelAndView.setViewName("user_navbar.jsp");
 		return modelAndView;
 	}

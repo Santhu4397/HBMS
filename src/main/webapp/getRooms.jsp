@@ -3,8 +3,8 @@
 <%@page import="com.ty.HBMS.dto.Rooms"%>
 <%@page import="com.ty.HBMS.dao.RoomDao"%>
 <%@page import="com.ty.HBMS.dto.User"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -14,12 +14,19 @@
 </head>
 <body>
 	<h1 align="center">
-		<b>ROOMS DETAILS</b>
+		ROOMS DETAILS
+		
 	</h1>
+
 	<%
 	HttpSession httpSession = request.getSession();
 	User user = (User) httpSession.getAttribute("user");
 	%>
+	<%if(user.getRole().equalsIgnoreCase("admin")){ %>
+		<%@ include file="AdminNavbar.jsp" %>
+	<%} else { %>
+		<%@ include file="user_navbar.jsp" %>
+	<%} %>
 	<table border="1" align="center">
 		<tr>
 			<th>room no</th>
@@ -52,7 +59,7 @@
 				<td><a href="getbyidroom?id=${u.roomId }">update</a></td>
 				<td><a href="removeroom?id=${u.roomId }">remove</a></td>
 				<%
-				} else {
+				} else  {
 				%>
 				<td><a href="add?roomId=${u.roomId}">Add to Cart</a></td>
 				<td><a href="getallbookings?">view Booking</a></td>

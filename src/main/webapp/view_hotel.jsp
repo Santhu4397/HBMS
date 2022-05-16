@@ -10,8 +10,15 @@
 </head>
 <body>
 	<h2 align="center">Hotel Details</h2>
-	<%HttpSession httpSession=request.getSession();
-	User user=(User)httpSession.getAttribute("user"); %>
+<%
+	HttpSession httpSession = request.getSession();
+	User user = (User) httpSession.getAttribute("user");
+	%>
+	<%if(user.getRole().equalsIgnoreCase("admin")){ %>
+		<%@ include file="AdminNavbar.jsp" %>
+	<%} else { %>
+		<%@ include file="user_navbar.jsp" %>
+	<%} %>
 	<table border="2">
 		<tr>
 			<th>Hotel Id</th>

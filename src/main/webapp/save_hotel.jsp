@@ -1,5 +1,6 @@
+<%@page import="com.ty.HBMS.dto.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
@@ -8,6 +9,16 @@
 <title>Create Hospital</title>
 </head>
 <body>
+<h1 align="center">Hotel Details</h1>
+<%
+	HttpSession httpSession = request.getSession();
+	User user = (User) httpSession.getAttribute("user");
+	%>
+	<%if(user.getRole().equalsIgnoreCase("admin")){ %>
+		<%@ include file="AdminNavbar.jsp" %>
+	<%} else { %>
+		<%@ include file="user_navbar.jsp" %>
+	<%} %>
 	<form:form action="savehotel" modelAttribute="hotel" method="post">
 		<table>
 			<tr>

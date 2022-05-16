@@ -31,7 +31,7 @@ public class UserController {
 	public ModelAndView saveUser(@ModelAttribute User user) {
 		dao.saveUser(user);
 		mv.addObject("save", user);
-		mv.setViewName("Home.jsp");
+		mv.setViewName("login.jsp");
 		return mv;
 	}
 

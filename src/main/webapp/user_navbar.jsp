@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" isELIgnored="true"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +7,9 @@
 <title>Insert title here</title>
 <style>
 li {
-	float: left;
+	background-color: gray;
+	overflow: hidden;
+	float: right;
 }
 
 ul {

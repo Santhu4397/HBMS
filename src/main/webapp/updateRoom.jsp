@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" isELIgnored="false"%>
+<%@page import="com.ty.HBMS.dto.User"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
          <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
@@ -9,6 +10,15 @@
 </head>
 <body>
 <h1 align="center">Update Room Details </h1>
+<%
+	HttpSession httpSession = request.getSession();
+	User user = (User) httpSession.getAttribute("user");
+	%>
+	<%if(user.getRole().equalsIgnoreCase("admin")){ %>
+		<%@ include file="AdminNavbar.jsp" %>
+	<%} else { %>
+		<%@ include file="user_navbar.jsp" %>
+	<%} %>
 <form:form action="updateroom" modelAttribute="rooms" >
 <table>
 <tr><td>Room ID:</td><td><form:input type="number" path="roomId" readonly="true"/></td></tr>
